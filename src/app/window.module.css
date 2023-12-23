@@ -1,0 +1,15 @@
+.window {
+  /* font-family: "VT323"; */
+  position: absolute;
+  text-align: left;
+  border: 2px solid #d3d3d3;
+  width: 500px;
+  height: 300px;
+  overflow: hidden;
+  resize: both;
+  display:flex;
+}
+
+.window header {
+  /* font-family: "VT323"; */
+}
