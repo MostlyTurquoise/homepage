@@ -1,17 +1,13 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 
-import WindowWrapper from "./windowWrapper";
+import { ScriptProps } from "next/script";
+import type { Metadata, ResolvingMetadata } from "next";
 
-export const VT323 = localFont({
-  src: "./fonts/VT323/VT323-Regular.ttf",
-});
-
-export const metadata: Metadata = {
-  title: "Home | MostlyTurquoise",
-  description: "The MostlyTurquoise Homepage",
-};
+export async function generateMetadata(props: ScriptProps, parent: ResolvingMetadata):Promise<Metadata>{
+  return {
+    title: "MostlyTurquoise"
+  }
+}
 
 export default function RootLayout({
   children,
@@ -21,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <WindowWrapper>{children}</WindowWrapper>
+        {children}
       </body>
     </html>
   );
