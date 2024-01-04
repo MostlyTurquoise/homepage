@@ -1,12 +1,12 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Window from "./window";
+import WindowWrapper from "./windowWrapper";
 
 export default function Home() {
   return (
     <>
       <div className={styles.pixelFilter}>
-        <Window>Test</Window>
+        
       </div>
     </>
   );
