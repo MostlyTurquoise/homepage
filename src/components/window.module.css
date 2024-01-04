@@ -4,10 +4,17 @@
   text-align: left;
   border: 2px solid #d3d3d3;
   overflow: hidden;
-  resize: both;
   display:flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
-.window header {
+.window-header {
   font-family: "VT323";
+}
+
+.window-body{
+  font-family: "VT323";
+  flex-grow:1000
 }
