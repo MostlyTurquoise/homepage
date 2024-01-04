@@ -2,19 +2,24 @@
   /* font-family: "VT323"; */
   position: absolute;
   text-align: left;
-  border: 2px solid #d3d3d3;
+  /* border: 2px solid #d3d3d3; */
   overflow: hidden;
   display:flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: stretch;
+  /* padding:2px; */
 }
 
-.window-header {
-  font-family: "VT323";
+.windowHeader {
+  /* font-family: "VT323"; */
+  cursor: move;
+  padding:2px;
 }
 
-.window-body{
-  font-family: "VT323";
-  flex-grow:1000
+.windowBody{
+  /* font-family: "VT323"; */
+  flex-grow:1000;
+  cursor: default;
+  padding:2px;
 }

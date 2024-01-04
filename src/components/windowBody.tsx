@@ -1,12 +1,18 @@
+import { WindowStyleContext } from "./window"
 import styles from "./window.module.css"
-import type { ReactNode } from "react"
+import { useContext, type ReactNode } from "react"
 
 export default function WindowBody(
-    {children}
+    {children, margin}
     :{
-        children: ReactNode
+        children: ReactNode,
+        margin:number
     }):JSX.Element {
-    return <div className={styles.windowBody}>
+    let windowStyle = useContext(WindowStyleContext)
+    return <div className={styles.windowBody} style={{
+        backgroundColor:windowStyle.backgroundColor,
+        marginTop:margin/2+"px"
+    }}>
         {children}
     </div>
 }
