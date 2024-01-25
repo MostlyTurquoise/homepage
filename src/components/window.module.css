@@ -15,11 +15,14 @@
   /* font-family: "VT323"; */
   cursor: move;
   padding:2px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .windowBody{
   /* font-family: "VT323"; */
   flex-grow:1000;
-  cursor: default;
+  cursor: auto;
   padding:2px;
 }
