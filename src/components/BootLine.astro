@@ -1,13 +1,21 @@
 ---
+interface Props {
+    delay: number;
+}
 
+let { delay = 0 }: Props = Astro.props;
 ---
 
 <style>
     .text {
-        font-family: "Courier New", Courier, monospace;
+        font-family: var(--font-decterm);
         margin: 0;
         line-height: auto;
     }
 </style>
 <pre
-    class="text">[<span style={{ color: "lightgreen" }}>  OK  </span>] <slot /></pre>
+    class="text"
+    style={{
+        display: delay == 0 ? "block" : "none",
+    }}
+    data-delay={delay}>[<span style={{ color: "lightgreen" }}>  OK  </span>] <slot /></pre>
