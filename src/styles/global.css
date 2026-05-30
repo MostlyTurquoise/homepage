@@ -4,6 +4,20 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
+:root {
+    --background-colour: #222;
+    --bright-background-colour: #1f4747;
+    --brighter-background-colour: #277272;
+}
+*::selection {
+    color: var(--background-colour);
+    background-color: white;
+}
+
+.chromatic-aberration {
+    filter: url("#chromatic-aberration");
+}
+
 .crt-filter::before {
     content: "";
     position: absolute;
@@ -24,15 +38,25 @@ body {
     background: #222;
     color: white;
     font-size: 20px;
-    filter: url("#chromatic-aberration");
-    height: 100vh;
+    min-height: 100vh;
+    height: fit-content;
     font-family: var(--font-decterm);
+    filter: url("#chromatic-aberration");
     /* line-height: 1.7; */
 }
 main {
+    display: flex;
     width: 720px;
     max-width: calc(100% - 2em);
     padding: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    max-height: fit-content;
+    width: 100vw;
 }
 
 h1,
@@ -44,10 +68,11 @@ h6 {
     margin: 0 0 0.5rem 0;
     color: rgb(var(--black));
     line-height: 1.2;
+    font-family: var(--font-brass-mono);
 }
 h1 {
     font-size: 3rem;
-    font-family: var(--font-day-poster-black);
+    /* font-family: var(--font-day-poster-black); */
 }
 h2 {
     font-size: 2.5rem;
@@ -73,6 +98,7 @@ a:hover {
 }
 p {
     margin-bottom: 1em;
+    line-height: 1.3em;
 }
 .prose p {
     margin-bottom: 2em;
@@ -95,15 +121,18 @@ code {
     padding: 2px 5px;
     background-color: rgb(var(--gray-light));
     border-radius: 2px;
+    font-family: var(--font-brass-mono);
 }
 pre {
     margin: none;
+    text-wrap-mode: wrap;
+    padding: 0.4rem;
 }
 pre > code {
     all: unset;
 }
 blockquote {
-    border-left: 4px solid var(--accent);
+    border-left: 4px solid white;
     padding: 0 0 0 20px;
     margin: 0;
     font-size: 1.333em;
@@ -112,6 +141,16 @@ hr {
     border: none;
     border-top: 1px solid rgb(var(--gray-light));
 }
+
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid white;
+}
+
 @media (max-width: 720px) {
     body {
         font-size: 18px;

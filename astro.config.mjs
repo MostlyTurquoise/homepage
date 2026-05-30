@@ -43,5 +43,83 @@ export default defineConfig({
                 ],
             },
         },
+        {
+            provider: fontProviders.local(),
+            name: "Brass Mono",
+            cssVariable: "--font-brass-mono",
+            fallbacks: ["mono"],
+            options: {
+                variants: [
+                    {
+                        src: [
+                            "./src/assets/fonts/Brass Mono/BrassMono-Regular.ttf",
+                        ],
+                        weight: "normal",
+                        style: "normal",
+                        display: "swap",
+                    },
+                    {
+                        src: [
+                            "./src/assets/fonts/Brass Mono/BrassMono-Bold.ttf",
+                        ],
+                        weight: "bold",
+                        style: "normal",
+                        display: "swap",
+                    },
+                    {
+                        src: [
+                            "./src/assets/fonts/Brass Mono/BrassMono-Italic.ttf",
+                        ],
+                        weight: "normal",
+                        style: "italic",
+                        display: "swap",
+                    },
+                    {
+                        src: [
+                            "./src/assets/fonts/Brass Mono/BrassMono-BoldItalic.ttf",
+                        ],
+                        weight: "bold",
+                        style: "italic",
+                        display: "swap",
+                    },
+                ],
+            },
+        },
+        {
+            provider: fontProviders.local(),
+            name: "Roboto",
+            cssVariable: "--font-roboto",
+            fallbacks: ["mono"],
+            options: {
+                variants: [
+                    {
+                        src: ["./src/assets/fonts/Roboto/Roboto-Regular.ttf"],
+                        weight: "normal",
+                        style: "normal",
+                        display: "swap",
+                    },
+                    {
+                        src: ["./src/assets/fonts/Roboto/Roboto-Bold.ttf"],
+                        weight: "bold",
+                        style: "normal",
+                        display: "swap",
+                    },
+                    {
+                        src: ["./src/assets/fonts/Roboto/Roboto-Italic.ttf"],
+                        weight: "normal",
+                        style: "italic",
+                        display: "swap",
+                    },
+                    {
+                        src: [
+                            "./src/assets/fonts/Roboto/Roboto-BoldItalic.ttf",
+                        ],
+                        weight: "bold",
+                        style: "italic",
+                        display: "swap",
+                    },
+                ],
+            },
+        },
     ],
 });

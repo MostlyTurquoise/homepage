@@ -1,0 +1,58 @@
+---
+import { type CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import Header from "../components/Header.astro";
+import BaseTail from "../components/BaseTail.astro";
+
+type Props = CollectionEntry<"thoughts">["data"];
+
+const { title, description, pubDate, updatedDate } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <style>
+            body {
+                background-color: var(--bright-background-colour);
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            @media (max-width: 35rem) {
+                h1 {
+                    font-size: 8cqw;
+                }
+            }
+
+            main {
+                display: block;
+                width: 720px;
+            }
+
+            .postcontent {
+                font-family: var(--font-roboto);
+            }
+
+            .deemphasised {
+                color: rgb(173, 226, 230);
+                font-family: var(--font-brass-mono);
+            }
+        </style>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body class="crt-filter">
+        <main>
+            <h1>{title}</h1>
+            <a href="/thoughts">Back to all</a>
+            <div class="postcontent">
+                <!-- <p class="deemphasised">beginnings</p> -->
+                <slot />
+            </div>
+        </main>
+        <BaseTail />
+    </body>
+</html>
