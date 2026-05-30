@@ -19,20 +19,20 @@
     z-index: 10;
 }
 body {
-	margin: 0;
-	padding: 0;
-	background: #222;
-	color: white;
-	font-size: 20px;
-	filter: url('#chromatic-aberration');
-	height: 100vh;
-	font-family: var(--font-decterm);
-	/* line-height: 1.7; */
+    margin: 0;
+    padding: 0;
+    background: #222;
+    color: white;
+    font-size: 20px;
+    filter: url("#chromatic-aberration");
+    height: 100vh;
+    font-family: var(--font-decterm);
+    /* line-height: 1.7; */
 }
 main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	padding:1em;
+    width: 720px;
+    max-width: calc(100% - 2em);
+    padding: 1em;
 }
 
 h1,
@@ -41,100 +41,100 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
-	line-height: 1.2;
+    margin: 0 0 0.5rem 0;
+    color: rgb(var(--black));
+    line-height: 1.2;
 }
 h1 {
-	font-size: 3.052em;
-	font-family: var(--font-day-poster-black);
+    font-size: 3rem;
+    font-family: var(--font-day-poster-black);
 }
 h2 {
-	font-size: 2.441em;
+    font-size: 2.5rem;
 }
 h3 {
-	font-size: 1.953em;
+    font-size: 2rem;
 }
 h4 {
-	font-size: 1.563em;
+    font-size: 1.5rem;
 }
 h5 {
-	font-size: 1.25em;
+    font-size: 1.25rem;
 }
 strong,
 b {
-	font-weight: 700;
+    font-weight: 700;
 }
 a {
-	color: var(--accent);
+    color: white;
 }
 a:hover {
-	color: var(--accent);
+    text-shadow: 0 0 0.01px;
 }
 p {
-	margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 .prose p {
-	margin-bottom: 2em;
+    margin-bottom: 2em;
 }
 textarea {
-	width: 100%;
-	font-size: 16px;
+    width: 100%;
+    font-size: 16px;
 }
 input {
-	font-size: 16px;
+    font-size: 16px;
 }
 table {
-	width: 100%;
+    width: 100%;
 }
 img {
-	max-width: 100%;
-	height: auto;
+    max-width: 100%;
+    height: auto;
 }
 code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
+    padding: 2px 5px;
+    background-color: rgb(var(--gray-light));
+    border-radius: 2px;
 }
 pre {
-	margin: none;
+    margin: none;
 }
 pre > code {
-	all: unset;
+    all: unset;
 }
 blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0;
-	font-size: 1.333em;
+    border-left: 4px solid var(--accent);
+    padding: 0 0 0 20px;
+    margin: 0;
+    font-size: 1.333em;
 }
 hr {
-	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+    border: none;
+    border-top: 1px solid rgb(var(--gray-light));
 }
 @media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-	main {
-		padding: 1em;
-	}
+    body {
+        font-size: 18px;
+    }
+    main {
+        padding: 1em;
+    }
 }
 
 .sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
-	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
-	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
-	white-space: nowrap;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+    clip: rect(1px 1px 1px 1px);
+    /* maybe deprecated but we need to support legacy browsers */
+    clip: rect(1px, 1px, 1px, 1px);
+    /* modern browsers, clip-path works inwards from each corner */
+    clip-path: inset(50%);
+    /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
+    white-space: nowrap;
 }
