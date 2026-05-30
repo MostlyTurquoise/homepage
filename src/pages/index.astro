@@ -32,13 +32,35 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
                 height: 15rem;
                 object-fit: contain;
             }
+
+            .version {
+                text-align: center;
+                width: 100%;
+                color: lightblue;
+            }
+
+            .aboutme {
+                width: min(100vw, 50ch);
+            }
         </style>
     </head>
     <body class="crt-filter" style="overflow: hidden; height:100vh">
         <main style="display:none;" class="homepage-main">
             <img src="/logo.png" class="logo" />
-            <h1>MostlyTurquoise</h1>
-            <div>This is where stuff would go</div>
+            <div>
+                <h1 style="margin:0">MostlyTurquoise</h1>
+                <div class="version">v4.1.3b they/them</div>
+            </div>
+            <p class="aboutme">
+                Hi, I'm MostlyTurquoise, a developer and musician from the UK. I
+                enjoy embedded programming, self hosting, and open source
+                software. My favourite languages are TypeScript and Rust.
+            </p>
+            <div class="linklist">
+                <a href="/thoughts">Blog</a> | <a
+                    href="https://github.com/MostlyTurquoise">GitHub</a
+                >
+            </div>
         </main>
         <div id="animation">
             <BootLine delay={0}>Started Beans Service</BootLine>
@@ -96,6 +118,12 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
                     const delay = parseFloat(current.dataset.delay || "0");
                     setTimeout(onNext, delay);
                 }
+
+                const skipAnimation = (e: Event) => {
+                    document.querySelector("main")!.style.display = "flex";
+                };
+                document.addEventListener("keydown", skipAnimation);
+                document.addEventListener("click", skipAnimation);
             </script>
         </div>
         <BaseTail />
