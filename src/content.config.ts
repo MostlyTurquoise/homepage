@@ -12,7 +12,8 @@ const thoughts = defineCollection({
             description: z.string(),
             // Transform string to Date object
             pubDate: z.coerce.date(),
-            updatedDate: z.coerce.date().optional(),
+            modDate: z.coerce.date().optional(),
+            background: z.string().optional(),
         }),
 });
 

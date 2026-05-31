@@ -22,7 +22,7 @@ export default defineConfig({
                         ],
                         weight: 400,
                         style: "normal",
-                        display: "swap",
+                        display: "block",
                     },
                 ],
             },
@@ -38,7 +38,7 @@ export default defineConfig({
                         src: ["./src/assets/fonts/DECTERM/decterm.ttf"],
                         weight: 400,
                         style: "normal",
-                        display: "swap",
+                        display: "block",
                     },
                 ],
             },
@@ -56,7 +56,7 @@ export default defineConfig({
                         ],
                         weight: "normal",
                         style: "normal",
-                        display: "swap",
+                        display: "block",
                     },
                     {
                         src: [
@@ -64,7 +64,7 @@ export default defineConfig({
                         ],
                         weight: "bold",
                         style: "normal",
-                        display: "swap",
+                        display: "block",
                     },
                     {
                         src: [
@@ -72,7 +72,7 @@ export default defineConfig({
                         ],
                         weight: "normal",
                         style: "italic",
-                        display: "swap",
+                        display: "block",
                     },
                     {
                         src: [
@@ -80,7 +80,7 @@ export default defineConfig({
                         ],
                         weight: "bold",
                         style: "italic",
-                        display: "swap",
+                        display: "block",
                     },
                 ],
             },
@@ -96,19 +96,19 @@ export default defineConfig({
                         src: ["./src/assets/fonts/Roboto/Roboto-Regular.ttf"],
                         weight: "normal",
                         style: "normal",
-                        display: "swap",
+                        display: "block",
                     },
                     {
                         src: ["./src/assets/fonts/Roboto/Roboto-Bold.ttf"],
                         weight: "bold",
                         style: "normal",
-                        display: "swap",
+                        display: "block",
                     },
                     {
                         src: ["./src/assets/fonts/Roboto/Roboto-Italic.ttf"],
                         weight: "normal",
                         style: "italic",
-                        display: "swap",
+                        display: "block",
                     },
                     {
                         src: [
@@ -116,7 +116,7 @@ export default defineConfig({
                         ],
                         weight: "bold",
                         style: "italic",
-                        display: "swap",
+                        display: "block",
                     },
                 ],
             },

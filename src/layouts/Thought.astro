@@ -4,10 +4,22 @@ import BaseHead from "../components/BaseHead.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import Header from "../components/Header.astro";
 import BaseTail from "../components/BaseTail.astro";
+import FormattedDate from "../components/FormattedDate.astro";
 
 type Props = CollectionEntry<"thoughts">["data"];
 
-const { title, description, pubDate, updatedDate } = Astro.props;
+const {
+    title,
+    description,
+    pubDate,
+    modDate,
+    background = `linear-gradient(
+                    80deg,
+                    #22e6dc 0%,
+                    #22e6dc 20%,
+                    #0e008b
+                )`,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -15,11 +27,13 @@ const { title, description, pubDate, updatedDate } = Astro.props;
     <head>
         <style>
             body {
-                background-color: var(--bright-background-colour);
+                background-color: #677;
             }
 
             h1 {
                 font-size: 3rem;
+                margin-bottom: 0;
+                margin-top: 0.5rem;
             }
 
             @media (max-width: 35rem) {
@@ -41,18 +55,50 @@ const { title, description, pubDate, updatedDate } = Astro.props;
                 color: rgb(173, 226, 230);
                 font-family: var(--font-brass-mono);
             }
+
+            div {
+                margin-bottom: 1ch;
+            }
+
+            .box {
+                /* background: linear-gradient(
+                    80deg,
+                    #22e6dc 0%,
+                    #22e6dc 20%,
+                    #0e008b
+                ); */
+                width: 100%;
+                height: 20rem;
+                filter: url("#posterize");
+                /* padding: 0.5rem; */
+                display: flex;
+                align-items: end;
+            }
         </style>
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     </head>
     <body class="crt-filter">
         <main>
+            <div class="box" style={{ background }}></div>
+            &lt; <a href="/thoughts">Back to all posts</a>
             <h1>{title}</h1>
-            <a href="/thoughts">Back to all</a>
-            <div class="postcontent">
-                <!-- <p class="deemphasised">beginnings</p> -->
-                <slot />
+            <div>
+                Published <FormattedDate date={pubDate} />
+                {
+                    modDate && (
+                        <>
+                            | Last modified <FormattedDate date={modDate} />
+                        </>
+                    )
+                }
+                <br />
+                <p><i>{description}</i></p>
+                <div class="postcontent">
+                    <!-- <p class="deemphasised">beginnings</p> -->
+                    <slot />
+                </div>
             </div>
+            <BaseTail />
         </main>
-        <BaseTail />
     </body>
 </html>

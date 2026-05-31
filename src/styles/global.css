@@ -9,6 +9,7 @@
     --bright-background-colour: #1f4747;
     --brighter-background-colour: #277272;
 }
+
 *::selection {
     color: var(--background-colour);
     background-color: white;
@@ -41,7 +42,8 @@ body {
     min-height: 100vh;
     height: fit-content;
     font-family: var(--font-decterm);
-    filter: url("#chromatic-aberration");
+    /* I don't know why this is necessary but the CRT filter breaks if it isnt there */
+    filter: brightness(1);
     /* line-height: 1.7; */
 }
 main {
@@ -69,6 +71,13 @@ h6 {
     color: rgb(var(--black));
     line-height: 1.2;
     font-family: var(--font-brass-mono);
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-decterm);
 }
 h1 {
     font-size: 3rem;
@@ -149,6 +158,20 @@ table {
 th,
 td {
     border: 1px solid white;
+}
+
+kbd {
+    font-family: var(--font-brass-mono);
+}
+
+li {
+    list-style-type: "- ";
+}
+
+mark {
+    background-color: transparent;
+    color: white;
+    filter: url("#chromatic-aberration");
 }
 
 @media (max-width: 720px) {

@@ -2,7 +2,12 @@
 title: 'Testing Markdown'
 description: 'Me trying out all the different markdown tags and etc for styling development'
 pubDate: 'May 31 2026'
-modDate: 'May 31 2026'
+background: "linear-gradient(
+                    80deg,
+                    #22e6dc 0%,
+                    #22e6dc 20%,
+                    #0e008b
+                )"
 ---
 import DectermPara from "../../components/DectermPara.astro"
 import ChromaticAberration from "../../components/ChromaticAberration.astro"
@@ -18,10 +23,12 @@ Yellow, black. Yellow, black. Yellow, black. Yellow, black.
 Ooh, black and yellow!
 Let's shake it up a little.</DectermPara>
 
-But that seems a little illegible to me. Instead, I have made the body font Roboto, which is much
+That seems a little illegible to me. Instead, I have made the body font Roboto, which is much
 nicer to read, but seems not so in fitting with the styling of the site.
 
-I am also unsure if the <ChromaticAberration>Chromatic Aberration</ChromaticAberration>
+I am also unsure if the <ChromaticAberration>Chromatic Aberration</ChromaticAberration> makes things 
+harder to read so I have left it disabled for blog pages. It seems to be less noticeable on desktop
+than on mobile.
 
 ## Headings
 
@@ -77,15 +84,14 @@ The blockquote element represents content that is quoted from another source, op
 
 ### Blockquote without attribution
 
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
-> **Note** that you can use _Markdown syntax_ within a blockquote.
+> According to **all known laws of aviation**, there is _no way_ a bee should be able to fly.
 
 ### Blockquote with attribution
 
-> Don't communicate by sharing memory, share memory by communicating.<br />
-> — <cite>Rob Pike[^1]</cite>
+> Coming!<br />
+> — <cite>Barry B Benson[^1]</cite>
 
-[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
+[^1]: The above quote is excerpted The Bee Movie (October 25, 2007)
 
 ## Tables
 
