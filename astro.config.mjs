@@ -7,7 +7,7 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://mostly.turquoise.fyi",
+    // site: "https://mostly.turquoise.fyi",
     integrations: [mdx(), sitemap()],
     fonts: [
         {
