@@ -1,9 +1,10 @@
 ---
 interface Props {
     delay: number;
+    mode?: number;
 }
 
-let { delay = 0 }: Props = Astro.props;
+let { delay = 0, mode = 1 }: Props = Astro.props;
 ---
 
 <style>
@@ -11,6 +12,7 @@ let { delay = 0 }: Props = Astro.props;
         font-family: var(--font-decterm);
         margin: 0;
         line-height: auto;
+        padding: 0;
     }
 </style>
 <pre
@@ -18,4 +20,9 @@ let { delay = 0 }: Props = Astro.props;
     style={{
         display: delay == 0 ? "block" : "none",
     }}
-    data-delay={delay}>[<span style={{ color: "lightgreen" }}>  OK  </span>] <slot /></pre>
+    data-delay={delay}>{mode == 0 
+        && (<span>        </span>)}{mode == 1 
+        && (<>[<span style={{ color: "lightgreen" }}>  OK  </span>]</>)}{mode == 2 
+        && (<>[<span style={{ color: "orange" }}> TIME </span>]</>)}{mode == 3 
+        && (<>[<span style={{ color: "red" }}>FAILED</span>]</>)} <slot />
+</pre>

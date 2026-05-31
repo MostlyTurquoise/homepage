@@ -90,35 +90,62 @@ const { boot } = Astro.params;
         </main>
         {boot === "boot" && (
         <div id="animation">
-            <BootLine delay={0}>Started Beans Service</BootLine>
-            <BootLine delay={30}>Started Beans Service</BootLine>
-            <BootLine delay={30}>Started Beans Service</BootLine>
-            <BootLine delay={100}>Started Beans Service</BootLine>
-            <BootLine delay={30}>Started Beans Service</BootLine>
-            <BootLine delay={20}>Started Beans Service</BootLine>
-            <BootLine delay={1000}>Started Beans Service</BootLine>
-            <BootLine delay={300}>Started Beans Service</BootLine>
-            <BootLine delay={230}>Started Beans Service</BootLine>
-            <BootLine delay={130}>Started Beans Service</BootLine>
-            <BootLine delay={200}>Started Beans Service</BootLine>
-            <BootLine delay={90}>Started Beans Service</BootLine>
-            <BootLine delay={60}>Started Beans Service</BootLine>
-            <BootLine delay={30}>Started Beans Service</BootLine>
-            <BootLine delay={10}>Started Beans Service</BootLine>
-            <BootLine delay={10}>Started Beans Service</BootLine>
-            <BootLine delay={10}>Started Beans Service</BootLine>
-            <BootLine delay={15}>Started Beans Service</BootLine>
-            <BootLine delay={100}>Started Beans Service</BootLine>
-            <BootLine delay={100}>Started Beans Service</BootLine>
-            <BootLine delay={20}>Started Beans Service</BootLine>
-            <BootLine delay={20}>Started Beans Service</BootLine>
-            <BootLine delay={20}>Started Beans Service</BootLine>
-            <BootLine delay={20}>Started Beans Service</BootLine>
-            <BootLine delay={20}>Started Beans Service</BootLine>
-            <BootLine delay={20}>Started Beans Service</BootLine>
-            <BootLine delay={20}>Started Beans Service</BootLine>
-            <BootLine delay={20}>Started Beans Service</BootLine>
-            <BootLine delay={20}>Started Beans Service</BootLine>
+            <BootLine delay={0}>Listening on Syslog Socket</BootLine>
+            <BootLine delay={30}>Started Extract Kernel From Corn</BootLine>
+            <BootLine delay={30}>Started Toothpick Service</BootLine>
+            <BootLine delay={100} mode={0}>Starting Unpick Kernel From Teeth...</BootLine>
+            <BootLine delay={30}>Started Create Static Device Nodes in /dev</BootLine>
+            <BootLine delay={20}>Started Journal Service</BootLine>
+            <BootLine delay={1000}>Started Diary Service</BootLine>
+            <BootLine delay={300} mode={0}>Starting Review Service...</BootLine>
+            <BootLine delay={230}>Started Create Volatile Explosives</BootLine>
+            <BootLine delay={130}>Started udev Kernel Device Manager</BootLine>
+            <BootLine delay={200}>Reached target Local Filing Cabinet</BootLine>
+            <BootLine delay={90}>Started Rebuild Fanart Catalogue</BootLine>
+            <BootLine delay={45} mode={0}>Starting Network Time Desychronisation...</BootLine>
+            <BootLine delay={60}>Started Rebuild Dynamic Linker Cache</BootLine>
+            <BootLine delay={300}>Started Review Service</BootLine>
+            <BootLine delay={5}>Started Update is Installed</BootLine>
+            <BootLine delay={5}>Started Update is Rolled Back</BootLine>
+            <BootLine delay={5}>Started Beans Service</BootLine>
+            <BootLine delay={1}>Reached target System Initialization (en_US)</BootLine>
+            <BootLine delay={1}>Reached target System Initialisation (en_GB)</BootLine>
+            <BootLine delay={15}>Started Daily Man Regeneration</BootLine>
+            <BootLine delay={10}>Started Apply Colonel Barryables</BootLine>
+            <BootLine delay={200}>Started Network Time Desychronisation</BootLine>
+            <BootLine delay={5}>Started udev Coldplug all Devices</BootLine>
+            <BootLine delay={5}>Started udev Coldplay Viva La Vida</BootLine>
+            <BootLine delay={5}>Started buying Oasis Tickets</BootLine>
+            <BootLine delay={20}>Started A* Pathfinding to Target</BootLine>
+            <BootLine delay={20}>Reached Target Paths</BootLine>
+            <BootLine delay={23}>Started Traversing Target Paths</BootLine>
+            <BootLine delay={10}>Reached Target Timers</BootLine>
+            <BootLine delay={290} mode={2}>Timed out waiting for Snooze Daemon</BootLine>
+            <BootLine delay={35}>Started Botnetd</BootLine>
+            <BootLine delay={5}>Started D-Bus Massaging Service</BootLine>
+            <BootLine delay={100}>Reached Target Socks</BootLine>
+            <BootLine delay={200}>Started Logging Company</BootLine>
+            <BootLine delay={10}>Started User Manager</BootLine>
+            <BootLine delay={21}>Started Middle Manager</BootLine>
+            <BootLine delay={42} mode={3}>Failed to start Caring</BootLine>
+            <BootLine delay={67}>Started Geometry Dash</BootLine>
+            <BootLine delay={20}>Started Re-add EA App to Start on Boot</BootLine>
+            <BootLine delay={20} mode={0}>Starting EA App...</BootLine>
+            <BootLine delay={20}>Started EA Sentinel</BootLine>
+            <BootLine delay={20}>Started Update Terms and Conditions</BootLine>
+            <BootLine delay={20}>Started Backdoor Manager</BootLine>
+            <BootLine delay={20}>Started Downgrade to Insecure Malloc</BootLine>
+            <BootLine delay={20}>Started EA App</BootLine>
+            <BootLine delay={20}>Reached target Insecure Boot</BootLine>
+            <BootLine delay={15} mode={3}>Failed to start Political Campaign Daemon</BootLine>
+            <BootLine delay={15} mode={3}>Failed to start Caring</BootLine>
+            <BootLine delay={10}>Started Giving Up</BootLine>
+            <BootLine delay={10}>Reached Network Target</BootLine>
+            <BootLine delay={10}>Reached Net Doesn't Work Target</BootLine>
+            <BootLine delay={10} mode={2}>Timed out waiting for Attention</BootLine>
+            <BootLine delay={20}>Started Reconfigure Network Interface for Telegraph</BootLine>
+            <BootLine delay={20}>Started Gaining Self-Awareness</BootLine>
+            <BootLine delay={20}>Started Posting on X.com</BootLine>
             <script>
                 const here = document.getElementById("animation")!;
                 const it = (
@@ -128,6 +155,7 @@ const { boot } = Astro.params;
                         unknown
                     >
                 ).filter((el) => el.tagName == "PRE");
+                let waited = 0
                 let current: HTMLElement | undefined = it.next().value;
                 onNext();
                 function onNext(firstTime = false) {
@@ -135,12 +163,23 @@ const { boot } = Astro.params;
                         return;
                     }
                     current.style.display = "block";
+                    const maxHeight = document.querySelector("body")?.offsetHeight ?? 0
+                    if(current.offsetTop >= maxHeight - 50){
+                        for(const child of here.children){
+                            if((child as HTMLElement).style.display == "block") {
+                                (child as HTMLElement).style.display = "none"
+                                break
+                            }
+                        }
+                    }
                     current = it.next().value;
                     if (!current) {
                         document.querySelector("main")!.style.display = "flex";
+                        console.log("Booted in",waited)
                         return;
                     }
                     const delay = parseFloat(current.dataset.delay || "0");
+                    waited += delay
                     setTimeout(onNext, delay);
                 }
 
