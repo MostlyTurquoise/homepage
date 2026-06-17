@@ -4,14 +4,13 @@ interface Props {
     mode?: number;
 }
 
-let { delay = 0, mode = 1 }: Props = Astro.props;
+let { delay: delay = 0, mode: mode = 1 }: Props = Astro.props;
 ---
 
 <style>
     .text {
         font-family: var(--font-decterm);
         margin: 0;
-        line-height: auto;
         padding: 0;
     }
 </style>
