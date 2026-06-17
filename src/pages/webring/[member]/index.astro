@@ -1,0 +1,24 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+    const members = await getCollection("webringMembers");
+    return members.map((member) => ({
+        params: { member: member.id },
+        props: member,
+    }));
+}
+type Props = CollectionEntry<"webringMembers">;
+
+const { data, id } = Astro.props;
+const members = await getCollection("webringMembers");
+const pos = members.findIndex((m) => m.id === id);
+const posLeft = (pos + members.length - 1) % members.length;
+const posRight = (pos + 1) % members.length;
+---
+
+<div>
+    <a href={"https://" + members[posLeft].data.url} target="_top">&lt;</a>
+    <span>Webring Webring</span>
+    <a href={"https://" + members[posRight].data.url} target="_top">&gt;</a>
+</div>

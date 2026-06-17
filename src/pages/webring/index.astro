@@ -1,0 +1,15 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+
+const members = await getCollection("webringMembers");
+---
+
+<div>
+    {
+        members.map((m) => (
+            <div>
+                <a href={"/webring/" + m.id}>{m.id}</a>
+            </div>
+        ))
+    }
+</div>

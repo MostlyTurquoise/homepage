@@ -3,9 +3,7 @@ import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
 const thoughts = defineCollection({
-    // Load Markdown and MDX files in the `src/content/blog/` directory.
     loader: glob({ base: "./src/content/thoughts", pattern: "**/*.{md,mdx}" }),
-    // Type-check frontmatter using a schema
     schema: ({ image }) =>
         z.object({
             title: z.string(),
@@ -17,4 +15,12 @@ const thoughts = defineCollection({
         }),
 });
 
-export const collections = { thoughts };
+const webringMembers = defineCollection({
+    loader: glob({ base: "./src/content/webring", pattern: "*.json" }),
+    schema: z.object({
+        name: z.string(),
+        url: z.string(),
+    }),
+});
+
+export const collections = { thoughts, webringMembers };
