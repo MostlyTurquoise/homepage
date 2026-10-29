@@ -1,0 +1,85 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Cassette from "../components/magnus-archives/Cassette.astro";
+import TypewriterNote from "../components/magnus-archives/TypewriterNote.astro";
+import { SITE_TITLE } from "../consts";
+import { getCollection } from "astro:content";
+import { render } from "astro:content";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
+import Wood from "../assets/images/wood.jpg";
+
+const episodes: [
+    CollectionEntry<"magnusArchivesEpisodes">,
+    AstroComponentFactory,
+][] = await Promise.all(
+    (await getCollection("magnusArchivesEpisodes"))
+        .sort((a, b) => a.data.episodeNumber - b.data.episodeNumber)
+        .map(async (p) => [p, (await render(p)).Content]),
+);
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title={SITE_TITLE + "| Magnus Archives theories"}
+            description="My theories for the Magnus Archives"
+        />
+        <style define:vars={{ woodImage: `url("${Wood.src}")` }}>
+            body {
+                font-family: var(--font-jmh-typewriter);
+                background-image: var(--woodImage);
+            }
+
+            .main-content {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+
+            .cassette-rack {
+                width: fit-content;
+                margin: 2ch;
+            }
+        </style>
+    </head>
+    <body>
+        <TypewriterNote>
+            <h1>Hiya</h1>
+            Hello
+            <p>
+                Hello words words words words words words words words words
+                words words words words words words words words words words
+                words words
+            </p>
+            <p>
+                Words words words words words words words words words words
+                words words words words words words words words words words
+                words words
+            </p>
+        </TypewriterNote>
+        <div class="main-content">
+            <div class="cassette-rack">
+                {episodes.map(([p, C]) => <Cassette {...p.data} />)}
+            </div>
+            <div>
+                {
+                    episodes.map(([p, C]) => (
+                        <div
+                            id={`note${p.data.episodeNumber.toString()}`}
+                            style="display: none;"
+                            aria-hidden="true"
+                            class="collapsible-note"
+                        >
+                            <TypewriterNote>
+                                <C />
+                            </TypewriterNote>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </body>
+</html>

@@ -121,5 +121,31 @@ export default defineConfig({
                 ],
             },
         },
+        {
+            provider: fontProviders.local(),
+            name: "JMH Typewriter",
+            cssVariable: "--font-jmh-typewriter",
+            fallbacks: ["mono"],
+            options: {
+                variants: [
+                    {
+                        src: [
+                            "./src/assets/fonts/JMH Typewriter/JMH Typewriter.ttf",
+                        ],
+                        weight: "normal",
+                        style: "normal",
+                        display: "block",
+                    },
+                    {
+                        src: [
+                            "./src/assets/fonts/JMH Typewriter/JMH Typewriter-Bold.ttf",
+                        ],
+                        weight: "bold",
+                        style: "normal",
+                        display: "block",
+                    },
+                ],
+            },
+        },
     ],
 });

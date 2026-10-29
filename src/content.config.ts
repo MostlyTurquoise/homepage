@@ -23,4 +23,18 @@ const webringMembers = defineCollection({
     }),
 });
 
-export const collections = { thoughts, webringMembers };
+const magnusArchivesEpisodes = defineCollection({
+    loader: glob({
+        base: "./src/content/magnus-archives-episodes",
+        pattern: "*.{md,mdx}",
+    }),
+    schema: z.object({
+        episodeTitle: z.string(),
+        episodeNumber: z.number(),
+        listenedOn: z.coerce.date().optional(),
+        themes: z.array(z.string()),
+        colour: z.string().regex(/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/),
+    }),
+});
+
+export const collections = { thoughts, webringMembers, magnusArchivesEpisodes };

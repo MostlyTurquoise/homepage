@@ -1,0 +1,70 @@
+---
+import type { CollectionEntry } from "astro:content";
+import TypewriterNote from "./TypewriterNote.astro";
+
+type Props = CollectionEntry<"magnusArchivesEpisodes">["data"];
+
+const { colour, episodeNumber, episodeTitle, themes, listenedOn } = Astro.props;
+---
+
+<style>
+    .cassette {
+        width: 35ch;
+        height: 5ch;
+        border: 1ch solid #333;
+        padding: 1ch;
+        font-family: var(--font-roboto);
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .title {
+        flex-grow: 6;
+        font-size: 2em;
+        margin-right: 3ch;
+    }
+
+    .episodenum {
+        width: 4ch;
+    }
+
+    summary::marker,
+    summary::-webkit-details-marker {
+        display: none;
+        content: none;
+    }
+
+    summary {
+        cursor: pointer;
+    }
+
+    details {
+    }
+</style>
+
+<div
+    class="cassette"
+    style={`background-color: ${colour};`}
+    id={`cassette${episodeNumber}`}
+>
+    <div class="episodenum">Ep. {episodeNumber}</div>
+    <div class="title">{episodeTitle}</div>
+</div>
+
+<script define:vars={{ episodeNumber }}>
+    document
+        .getElementById(`cassette${episodeNumber}`)
+        .addEventListener("click", (e) => {
+            for (let el of document.querySelectorAll(".collapsible-note")) {
+                el.style.display = "none";
+            }
+            document.getElementById(`note${episodeNumber}`).style.display =
+                "block";
+            for (const el of document.querySelectorAll(".cassette")) {
+                el.style.marginLeft = "0rem";
+            }
+            e.currentTarget.style.marginLeft = "2rem";
+        });
+</script>
