@@ -1,6 +1,7 @@
 ---
-episodeTitle: "Squirm"
-episodeNumber: 6
+type: "episode"
+title: "Squirm"
+number: 6
 listenedOn: "January 1 1970"
 themes: ["worms"]
 colour: "#eab8ae"

@@ -1,6 +1,7 @@
 ---
-episodeTitle: "Do Not Open"
-episodeNumber: 2
+type: "episode"
+title: "Do Not Open"
+number: 2
 listenedOn: "January 1 1970"
 themes: ["graves"]
 colour: "#A10"

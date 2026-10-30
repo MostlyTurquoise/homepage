@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry, RenderedContent } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Cassette from "../components/magnus-archives/Cassette.astro";
 import TypewriterNote from "../components/magnus-archives/TypewriterNote.astro";
@@ -13,21 +13,26 @@ import CassetteRackTop from "../assets/images/cassetteracktop.png";
 import CassetteRackShelf from "../assets/images/cassetterackshelf.png";
 import CassetteImg from "../assets/images/cassette.png";
 
-const episodes: [
-    CollectionEntry<"magnusArchivesEpisodes">,
-    AstroComponentFactory,
-][] = await Promise.all(
-    (await getCollection("magnusArchivesEpisodes"))
-        .sort((a, b) => a.data.episodeNumber - b.data.episodeNumber)
-        .map(async (p) => [p, (await render(p)).Content]),
-);
+type EpisodeCollectionEntry = CollectionEntry<"magnusArchivesEpisodes"> & {
+    data: { type: "episode" };
+};
+
+const episodes: [EpisodeCollectionEntry, AstroComponentFactory][] =
+    await Promise.all(
+        (await getCollection("magnusArchivesEpisodes"))
+            .filter(
+                (p): p is EpisodeCollectionEntry => p.data.type === "episode",
+            )
+            .sort((a, b) => a.data.number - b.data.number)
+            .map(async (p) => [p, (await render(p)).Content]),
+    );
 ---
 
 <!doctype html>
 <html lang="en">
     <head>
         <BaseHead
-            title={SITE_TITLE + "| Magnus Archives theories"}
+            title={SITE_TITLE + " | Magnus Archives theories"}
             description="My theories for the Magnus Archives"
         />
         <style
@@ -35,36 +40,45 @@ const episodes: [
                 woodImage: `url("${Wood.src}")`,
                 cassetteRackTopImage: `url("${CassetteRackTop.src}")`,
                 cassetteRackShelfImage: `url("${CassetteRackShelf.src}")`,
+                cassetteImage: `url("${CassetteImg.src}")`,
             }}
         >
             body {
                 font-family: var(--font-jmh-typewriter);
                 background-image: var(--woodImage);
                 height: 100vh;
+                overflow: hidden;
             }
 
             .main-content {
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-start;
-                height: 100%;
+                align-items: stretch;
+                height: 100vh;
+                overflow: hidden;
             }
 
             .cassette-rack {
-                width: fit-content;
+                width: min(30vw, 100vw);
+                flex-grow: 0;
                 /* padding: 0ch 3.5rem; */
                 /* margin: 1rem; */
                 /* background-image: var(--cassetteRackShelfImage); */
                 /* outline: 1ch solid rgba(0.5, 0.5, 0.5, 0.3); */
-                margin-right: 2rem;
+                margin-right: 1vw;
                 filter: drop-shadow(0.5ch 0.5ch 0.5ch #000);
+                /* height: 100%; */
+                overflow-y: scroll;
+                overflow-x: hidden;
+                flex-shrink: 0;
             }
 
             .cassette-rack-end {
                 width: 100%;
                 background-image: var(--cassetteRackTopImage);
                 background-size: 100% 100%;
-                height: 3rem;
+                height: 4vw;
             }
 
             .cassette-rack-bottom {
@@ -72,14 +86,22 @@ const episodes: [
             }
 
             .cassette-image {
-                width: 40ch;
+                margin-left: 5vw;
+                width: 22vw;
+                height: 16vw;
+                font-size: 0.5em;
+                padding: 2.8vw 5.8vw;
+                color: black;
                 filter: drop-shadow(0.5ch 0.5ch 0.5ch #000);
+                background-image: var(--cassetteImage);
+                background-size: 100%;
+                background-repeat: no-repeat;
             }
 
             .cassette-label {
                 position: relative;
-                bottom: 15.5rem;
-                left: 4.5rem;
+                bottom: 11.7rem;
+                left: 2.7rem;
                 height: 0rem;
                 width: 20rem;
                 overflow: visible;
@@ -96,10 +118,12 @@ const episodes: [
 
             .tabletop {
                 width: 100%;
+                flex-grow: 10;
+                padding: 1vw;
             }
 
             .hint {
-                margin-left: 30%;
+                margin-left: 25%;
                 margin-top: 40%;
                 width: 20rem;
                 height: fit-content;
@@ -146,15 +170,12 @@ const episodes: [
                 {
                     episodes.map(([p, C]) => (
                         <div
-                            id={`note${p.data.episodeNumber.toString()}`}
+                            id={`note${p.data.number}`}
                             style="display: none;"
                             aria-hidden="true"
                             class="collapsible-note"
                         >
-                            <img src={CassetteImg.src} class="cassette-image" />
-                            <div class="cassette-label">
-                                {p.data.episodeTitle}
-                            </div>
+                            <div class="cassette-image">{p.data.title}</div>
                             <TypewriterNote>
                                 <p>{p.data.listenedOn?.toLocaleDateString()}</p>
                                 <C />

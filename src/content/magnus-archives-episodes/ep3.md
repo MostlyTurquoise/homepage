@@ -1,6 +1,7 @@
 ---
-episodeTitle: "Across the Street"
-episodeNumber: 3
+type: "episode"
+title: "Across the Street"
+number: 3
 listenedOn: "January 1 1970"
 themes: ["impersonation"]
 colour: "#a28c89"

@@ -1,6 +1,7 @@
 ---
-episodeTitle: "Thrown Away"
-episodeNumber: 5
+type: "episode"
+title: "Thrown Away"
+number: 5
 listenedOn: "January 1 1970"
 themes: []
 colour: "#3f4a49"

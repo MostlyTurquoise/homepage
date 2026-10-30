@@ -1,6 +1,7 @@
 ---
-episodeTitle: "Angler Fish"
-episodeNumber: 1
+type: "episode"
+title: "Angler Fish"
+number: 1
 listenedOn: "January 1 1970"
 themes: ["impersonation"]
 colour: "#D9A"
