@@ -1,16 +1,20 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import TypewriterNote from "./TypewriterNote.astro";
+import CassetteRackShelf from "../../assets/images/cassetterackshelf.png";
 
 type Props = CollectionEntry<"magnusArchivesEpisodes">["data"];
 
 const { colour, episodeNumber, episodeTitle, themes, listenedOn } = Astro.props;
 ---
 
-<style>
+<style
+    define:vars={{
+        cassetteRackShelfImage: `url("${CassetteRackShelf.src}")`,
+    }}
+>
     .cassette {
-        width: 35ch;
-        height: 5ch;
+        width: 20rem;
+        height: 1rem;
         border: 1ch solid #333;
         padding: 1ch;
         font-family: var(--font-roboto);
@@ -18,53 +22,71 @@ const { colour, episodeNumber, episodeTitle, themes, listenedOn } = Astro.props;
         display: flex;
         flex-direction: row;
         align-items: center;
+        cursor: pointer;
     }
 
     .title {
         flex-grow: 6;
-        font-size: 2em;
-        margin-right: 3ch;
+        font-size: 1.5em;
+        /* margin-right: 3ch; */
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     .episodenum {
         width: 4ch;
+        flex-shrink: 0;
     }
 
-    summary::marker,
-    summary::-webkit-details-marker {
-        display: none;
-        content: none;
-    }
-
-    summary {
-        cursor: pointer;
-    }
-
-    details {
+    .shelf {
+        background-image: var(--cassetteRackShelfImage);
+        background-size: 100% 100%;
+        padding: 0rem 3.5rem;
+        padding-bottom: 0.7rem;
+        width: 23rem;
     }
 </style>
 
-<div
-    class="cassette"
-    style={`background-color: ${colour};`}
-    id={`cassette${episodeNumber}`}
->
-    <div class="episodenum">Ep. {episodeNumber}</div>
-    <div class="title">{episodeTitle}</div>
+<div class="shelf">
+    <div
+        class="cassette"
+        style={`background-color: ${colour};`}
+        id={`cassette${episodeNumber}`}
+    >
+        <div class="episodenum">Ep. {episodeNumber}</div>
+        <div class="title">{episodeTitle}</div>
+    </div>
 </div>
 
 <script define:vars={{ episodeNumber }}>
     document
         .getElementById(`cassette${episodeNumber}`)
         .addEventListener("click", (e) => {
-            for (let el of document.querySelectorAll(".collapsible-note")) {
-                el.style.display = "none";
+            let expanded = e.currentTarget.style.marginLeft == "3ch";
+            console.log(e.currentTarget.style.marginLeft);
+            if (!expanded) {
+                for (let el of document.querySelectorAll(".collapsible-note")) {
+                    el.style.display = "none";
+                }
+                for (const el of document.querySelectorAll(".cassette")) {
+                    el.style.marginLeft = "0ch";
+                    el.style.opacity = "1";
+                }
+                document.querySelector(".hint").style.display = "none";
+                document.getElementById(`note${episodeNumber}`).style.display =
+                    "block";
+                e.currentTarget.style.marginLeft = "3ch";
+                e.currentTarget.style.opacity = "0";
+                expanded = true;
+            } else {
+                for (let el of document.querySelectorAll(".collapsible-note")) {
+                    el.style.display = "none";
+                }
+                e.currentTarget.style.marginLeft = "0ch";
+                e.currentTarget.style.opacity = "1";
+                document.querySelector(".hint").style.display = "block";
+                expanded = false;
             }
-            document.getElementById(`note${episodeNumber}`).style.display =
-                "block";
-            for (const el of document.querySelectorAll(".cassette")) {
-                el.style.marginLeft = "0rem";
-            }
-            e.currentTarget.style.marginLeft = "2rem";
         });
 </script>

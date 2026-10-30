@@ -9,6 +9,9 @@ import { render } from "astro:content";
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
 import Wood from "../assets/images/wood.jpg";
+import CassetteRackTop from "../assets/images/cassetteracktop.png";
+import CassetteRackShelf from "../assets/images/cassetterackshelf.png";
+import CassetteImg from "../assets/images/cassette.png";
 
 const episodes: [
     CollectionEntry<"magnusArchivesEpisodes">,
@@ -27,44 +30,119 @@ const episodes: [
             title={SITE_TITLE + "| Magnus Archives theories"}
             description="My theories for the Magnus Archives"
         />
-        <style define:vars={{ woodImage: `url("${Wood.src}")` }}>
+        <style
+            define:vars={{
+                woodImage: `url("${Wood.src}")`,
+                cassetteRackTopImage: `url("${CassetteRackTop.src}")`,
+                cassetteRackShelfImage: `url("${CassetteRackShelf.src}")`,
+            }}
+        >
             body {
                 font-family: var(--font-jmh-typewriter);
                 background-image: var(--woodImage);
+                height: 100vh;
             }
 
             .main-content {
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-start;
+                height: 100%;
             }
 
             .cassette-rack {
                 width: fit-content;
-                margin: 2ch;
+                /* padding: 0ch 3.5rem; */
+                /* margin: 1rem; */
+                /* background-image: var(--cassetteRackShelfImage); */
+                /* outline: 1ch solid rgba(0.5, 0.5, 0.5, 0.3); */
+                margin-right: 2rem;
+                filter: drop-shadow(0.5ch 0.5ch 0.5ch #000);
+            }
+
+            .cassette-rack-end {
+                width: 100%;
+                background-image: var(--cassetteRackTopImage);
+                background-size: 100% 100%;
+                height: 3rem;
+            }
+
+            .cassette-rack-bottom {
+                transform: scaleY(-1);
+            }
+
+            .cassette-image {
+                width: 40ch;
+                filter: drop-shadow(0.5ch 0.5ch 0.5ch #000);
+            }
+
+            .cassette-label {
+                position: relative;
+                bottom: 15.5rem;
+                left: 4.5rem;
+                height: 0rem;
+                width: 20rem;
+                overflow: visible;
+                color: black;
+                font-size: 0.5em;
+            }
+
+            .collapsible-note {
+                height: 100%;
+                overflow-y: scroll;
+                flex-grow: 4;
+                width: 100%;
+            }
+
+            .tabletop {
+                width: 100%;
+            }
+
+            .hint {
+                margin-left: 30%;
+                margin-top: 40%;
+                width: 20rem;
+                height: fit-content;
+                background-color: lightcyan;
+                color: black;
+                font-family: var(--font-roboto);
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .hint h1 {
+                font-size: 1.2em;
+                font-family: var(--font-roboto);
+                font-weight: normal;
             }
         </style>
     </head>
     <body>
-        <TypewriterNote>
+        <!-- <TypewriterNote>
             <h1>Hiya</h1>
             Hello
             <p>
-                Hello words words words words words words words words words
-                words words words words words words words words words words
-                words words
+                Hello words words words words words words words words
+                words words words words words words words words words
+                words words words words
             </p>
             <p>
-                Words words words words words words words words words words
-                words words words words words words words words words words
-                words words
+                Words words words words words words words words words
+                words words words words words words words words words
+                words words words words
             </p>
-        </TypewriterNote>
+        </TypewriterNote> -->
         <div class="main-content">
             <div class="cassette-rack">
+                <div class="cassette-rack-end"></div>
                 {episodes.map(([p, C]) => <Cassette {...p.data} />)}
+                <div class="cassette-rack-end cassette-rack-bottom"></div>
             </div>
-            <div>
+            <div class="tabletop">
+                <div class="hint">
+                    <h1>Hello and welcome to my Magnus Archives theories.</h1> Click
+                    on an episode to the left to pull it up here
+                </div>
                 {
                     episodes.map(([p, C]) => (
                         <div
@@ -73,7 +151,12 @@ const episodes: [
                             aria-hidden="true"
                             class="collapsible-note"
                         >
+                            <img src={CassetteImg.src} class="cassette-image" />
+                            <div class="cassette-label">
+                                {p.data.episodeTitle}
+                            </div>
                             <TypewriterNote>
+                                <p>{p.data.listenedOn?.toLocaleDateString()}</p>
                                 <C />
                             </TypewriterNote>
                         </div>
