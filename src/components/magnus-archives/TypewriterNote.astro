@@ -25,11 +25,17 @@ const { hidden = false, id = null } = Astro.props;
 
     .note > h1 {
         text-align: center;
+    }
+
+    .note > h1,
+    .note > h2,
+    .note > h3 {
         text-decoration: underline;
         text-decoration-skip-ink: none;
         font-size: 1em;
         font-weight: normal;
         font-family: var(--font-jmh-typewriter);
+        margin-top: 2rem;
     }
 </style>
 <div class="note" id={id ?? ""} style={hidden ? "display: none;" : ""}>
