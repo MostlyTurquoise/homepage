@@ -1,0 +1,96 @@
+---
+import type { CollectionEntry } from "astro:content";
+import CassetteRackShelf from "../../assets/images/cassetterackshelf.png";
+
+type Props = CollectionEntry<"magnusArchivesEpisodes">["data"] & {
+    type: "episode";
+};
+
+const { colour, number, title, themes, listenedOn } = Astro.props;
+---
+
+<style
+    define:vars={{
+        cassetteRackShelfImage: `url("${CassetteRackShelf.src}")`,
+    }}
+>
+    .cassette {
+        /* width: 20rem; */
+        height: 1vw;
+        border: 0.6vw solid rgba(134, 133, 133, 0.3);
+        background-clip: padding-box;
+        padding: 1ch;
+        font-family: var(--font-roboto);
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .title {
+        flex-grow: 6;
+        font-size: 1.2em;
+        /* margin-right: 3ch; */
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .episodenum {
+        width: fit-content;
+        flex-shrink: 0;
+    }
+
+    .shelf {
+        background-image: var(--cassetteRackShelfImage);
+        background-size: 100% 100%;
+        padding: 0rem 4vw;
+        padding-bottom: 1vw;
+        font-size: 1.5vw;
+        /* width: 23rem; */
+    }
+</style>
+
+<div class="shelf">
+    <div
+        class="cassette"
+        style={`background-color: ${colour};`}
+        id={`cassette${number}`}
+    >
+        <div class="episodenum">Ep. {number}</div>
+        <div class="title">{title}</div>
+    </div>
+</div>
+
+<script define:vars={{ number }}>
+    document
+        .getElementById(`cassette${number}`)
+        .addEventListener("click", (e) => {
+            let expanded = e.currentTarget.style.marginLeft == "3ch";
+            console.log(e.currentTarget.style.marginLeft);
+            if (!expanded) {
+                for (let el of document.querySelectorAll(".collapsible-note")) {
+                    el.style.display = "none";
+                }
+                for (const el of document.querySelectorAll(".cassette")) {
+                    el.style.marginLeft = "0ch";
+                    el.style.opacity = "1";
+                }
+                document.querySelector(".hint").style.display = "none";
+                document.getElementById(`note${number}`).style.display =
+                    "block";
+                e.currentTarget.style.marginLeft = "3ch";
+                e.currentTarget.style.opacity = "0";
+                expanded = true;
+            } else {
+                for (let el of document.querySelectorAll(".collapsible-note")) {
+                    el.style.display = "none";
+                }
+                e.currentTarget.style.marginLeft = "0ch";
+                e.currentTarget.style.opacity = "1";
+                document.querySelector(".hint").style.display = "block";
+                expanded = false;
+            }
+        });
+</script>

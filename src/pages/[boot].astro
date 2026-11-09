@@ -98,6 +98,21 @@ const { boot } = Astro.params;
                 width: min(90vw, 50ch);
                 text-align: center;
             }
+
+            .webring-container {
+                border: 0.1ch solid white;
+                padding: 0.2ch;
+            }
+
+            .webring-container a {
+                text-decoration: none;
+                padding-left: 2ch;
+                padding-right: 2ch;
+            }
+
+            .webring-container span {
+                padding: 0.5ch;
+            }
         </style>
     </head>
     <body
@@ -130,19 +145,19 @@ const { boot } = Astro.params;
                     data-content="GitHub">GitHub</a
                 >
             </div>
-            <!-- <div>
+            <div class="webring-container">
                 <a href="/webring/mostlyturquoise/left">&lt;</a>
-                <span>Webring</span>
+                <span>People I Know Webring</span>
                 <a href="/webring/mostlyturquoise/right">&gt;</a>
             </div>
-            <iframe src="/webring/mostlyturquoise"></iframe> -->
+            <!-- <iframe src="/webring/mostlyturquoise"></iframe> -->
             <div class="buttons">
                 {
                     x88x31s.map(([i, a, l, d]) => (
                         <B88x31
                             image={i}
-                            link={l}
                             description={a}
+                            link={l}
                             download={d}
                         />
                     ))

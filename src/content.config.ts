@@ -23,4 +23,41 @@ const webringMembers = defineCollection({
     }),
 });
 
-export const collections = { thoughts, webringMembers };
+const magnusArchivesEpisodes = defineCollection({
+    loader: glob({
+        base: "./src/content/magnus-archives-episodes",
+        pattern: "*.{md,mdx}",
+    }),
+    schema: z.discriminatedUnion("type", [
+        z.object({
+            type: z.literal("episode"),
+            title: z.string(),
+            number: z.number(),
+            listenedOn: z.coerce.date().optional(),
+            themes: z.array(z.string()),
+            tags: z.array(z.string()).optional(),
+            colour: z.string().regex(/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/),
+        }),
+        z.object({
+            type: z.literal("hidden"),
+            title: z.string().optional(),
+            number: z.number().optional(),
+            listenedOn: z.coerce.date().optional(),
+            themes: z.array(z.string()).optional(),
+            colour: z
+                .string()
+                .regex(/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/)
+                .optional(),
+            name: z.string().optional(),
+            tagName: z.string().optional(),
+        }),
+        z.object({
+            type: z.literal("theme"),
+            name: z.string(),
+            tagName: z.string(),
+            colour: z.string().regex(/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/),
+        }),
+    ]),
+});
+
+export const collections = { thoughts, webringMembers, magnusArchivesEpisodes };

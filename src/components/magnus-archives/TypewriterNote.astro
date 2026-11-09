@@ -1,0 +1,44 @@
+---
+interface Props {
+    hidden?: boolean;
+    id?: string;
+}
+
+const { hidden = false, id = null } = Astro.props;
+---
+
+<style>
+    div {
+        background-color: antiquewhite;
+        font-family: var(--font-jmh-typewriter);
+        font-size: 1rem;
+        width: min(48vw, 90vw);
+        color: black;
+        padding: 5vw;
+        margin: 2ch;
+        filter: drop-shadow(0.1ch 0.1ch 0.5ch #000);
+    }
+</style>
+<style is:global>
+    .note > p {
+        text-indent: 3.5ch;
+    }
+
+    .note > h1 {
+        text-align: center;
+    }
+
+    .note > h1,
+    .note > h2,
+    .note > h3 {
+        text-decoration: underline;
+        text-decoration-skip-ink: none;
+        font-size: 1em;
+        font-weight: normal;
+        font-family: var(--font-jmh-typewriter);
+        margin-top: 2rem;
+    }
+</style>
+<div class="note" id={id ?? ""} style={hidden ? "display: none;" : ""}>
+    <slot />
+</div>
